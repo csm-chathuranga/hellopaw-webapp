@@ -26,17 +26,39 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
-
-// Authentication layout components
+import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import TextField from '@mui/material/TextField';
 import CoverLayout from "layouts/authentication/components/CoverLayout";
-
-// Images
 import curved9 from "assets/images/curved-images/curved-6.jpg";
+import { useRoutes, useNavigate } from "react-router-dom";
+import { themeAtom } from "../../../store";
+import { useAtom } from "jotai";
 
+const schema = yup.object().shape({
+  email: yup.string().required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
 function SignIn() {
-  const [rememberMe, setRememberMe] = useState(true);
+  const navigate = useNavigate();
+  const [token, setToken] = useAtom(themeAtom);
+  const { register, handleSubmit,  formState: { errors }, setValue, } = useForm({ resolver: yupResolver(schema) });
 
-  const handleSetRememberMe = () => setRememberMe(!rememberMe);
+  const submitHandler = (val) => {
+    axios.post('http://localhost:3002/api/auth/login', {
+      "email": val.email,
+      "password":val.password
+    })
+    .then(function (response) {
+      setToken(JSON.stringify(response.data.data))
+      navigate('/dashboard')
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  };
 
   return (
     <CoverLayout
@@ -44,14 +66,16 @@ function SignIn() {
       description="Enter your email and password to sign in"
       image={curved9}
     >
-      <SoftBox component="form" role="form">
+        <form onSubmit={handleSubmit(submitHandler)} id="hook-form">
+      {/* <SoftBox component="form" role="form"> */}
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
             <SoftTypography component="label" variant="caption" fontWeight="bold">
               Email
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="email" placeholder="Email" />
+    
+          <SoftInput type="email" placeholder="Email" {...register("email")} error={errors?.email ? true : false} />
         </SoftBox>
         <SoftBox mb={2}>
           <SoftBox mb={1} ml={0.5}>
@@ -59,21 +83,10 @@ function SignIn() {
               Password
             </SoftTypography>
           </SoftBox>
-          <SoftInput type="password" placeholder="Password" />
-        </SoftBox>
-        <SoftBox display="flex" alignItems="center">
-          <Switch checked={rememberMe} onChange={handleSetRememberMe} />
-          <SoftTypography
-            variant="button"
-            fontWeight="regular"
-            onClick={handleSetRememberMe}
-            sx={{ cursor: "pointer", userSelect: "none" }}
-          >
-            &nbsp;&nbsp;Remember me
-          </SoftTypography>
+          <SoftInput type="password" placeholder="Password" {...register("password")} error={errors?.password ? true : false}/>
         </SoftBox>
         <SoftBox mt={4} mb={1}>
-          <SoftButton variant="gradient" color="info" fullWidth>
+          <SoftButton variant="gradient" color="info" fullWidth  type="submit">
             sign in
           </SoftButton>
         </SoftBox>
@@ -92,7 +105,8 @@ function SignIn() {
             </SoftTypography>
           </SoftTypography>
         </SoftBox>
-      </SoftBox>
+      {/* </SoftBox> */}
+      </form>
     </CoverLayout>
   );
 }

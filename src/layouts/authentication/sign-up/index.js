@@ -53,9 +53,9 @@ function SignUp() {
             Register with
           </SoftTypography>
         </SoftBox>
-        <SoftBox mb={2}>
-          <Socials />
-        </SoftBox>
+        {/* <SoftBox mb={2}> */}
+          {/* <Socials /> */}
+        {/* </SoftBox> */}
         <Separator />
         <SoftBox pt={2} pb={3} px={3}>
           <SoftBox component="form" role="form">
