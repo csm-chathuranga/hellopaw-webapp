@@ -24,6 +24,7 @@ import SoftButton from "components/SoftButton";
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 
+
 // Custom styles for the SidenavCard
 import { card, cardContent, cardIconBox, cardIcon } from "examples/Sidenav/styles/sidenavCard";
 
