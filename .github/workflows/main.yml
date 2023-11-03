@@ -26,7 +26,7 @@ jobs:
         env:
           CI: false
 
-      # Runs a set of commands using the runners shell
+      # Runs a set of commands using the runners shel
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
