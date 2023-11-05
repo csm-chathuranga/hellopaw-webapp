@@ -66,12 +66,6 @@ function Footer({ company, links }) {
             favorite
           </Icon>
         </SoftBox>
-        by
-        <Link href={href} target="_blank">
-          <SoftTypography variant="button" fontWeight="medium">
-            &nbsp;{name}&nbsp;
-          </SoftTypography>
-        </Link>
         for a better web.
       </SoftBox>
       <SoftBox
@@ -101,10 +95,8 @@ function Footer({ company, links }) {
 Footer.defaultProps = {
   company: { href: "https://www.creative-tim.com/", name: "Creative Tim" },
   links: [
-    { href: "https://www.creative-tim.com/", name: "Creative Tim" },
     { href: "https://www.creative-tim.com/presentation", name: "About Us" },
     { href: "https://www.creative-tim.com/blog", name: "Blog" },
-    { href: "https://www.creative-tim.com/license", name: "License" },
   ],
 };
 

@@ -37,7 +37,7 @@ import typography from "assets/theme/base/typography";
 import BuildByDevelopers from "layouts/rtl/components/BuildByDevelopers";
 import WorkWithTheRockets from "layouts/rtl/components/WorkWithTheRockets";
 import Projects from "layouts/rtl/components/Projects";
-import OrderOverview from "layouts/rtl/components/OrderOverview";
+// import OrderOverview from "layouts/rtl/components/OrderOverview";
 
 // Data
 import reportsBarChartData from "layouts/rtl/data/reportsBarChartData";
@@ -152,7 +152,7 @@ function RTL() {
             <Projects />
           </Grid>
           <Grid item xs={12} md={6} lg={4}>
-            <OrderOverview />
+            {/* <OrderOverview /> */}
           </Grid>
         </Grid>
       </SoftBox>

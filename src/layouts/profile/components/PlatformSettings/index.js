@@ -35,7 +35,7 @@ function PlatformSettings() {
     <Card>
       <SoftBox pt={2} px={2}>
         <SoftTypography variant="h6" fontWeight="medium" textTransform="capitalize">
-          platform settings
+          My Account settings
         </SoftTypography>
       </SoftBox>
       <SoftBox pt={1.5} pb={2} px={2} lineHeight={1.25}>
@@ -48,7 +48,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone follows me
+              Receive Email notifications
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -58,7 +58,7 @@ function PlatformSettings() {
           </SoftBox>
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
-              Email me when someone answers on my post
+              Hide my account from others
             </SoftTypography>
           </SoftBox>
         </SoftBox>
@@ -69,46 +69,6 @@ function PlatformSettings() {
           <SoftBox width="80%" ml={2}>
             <SoftTypography variant="button" fontWeight="regular" color="text">
               Email me when someone mentions me
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox mt={3}>
-          <SoftTypography
-            variant="caption"
-            fontWeight="bold"
-            color="text"
-            textTransform="uppercase"
-          >
-            application
-          </SoftTypography>
-        </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={newLaunches} onChange={() => setNewLaunches(!newLaunches)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              New launches and projects
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={productUpdate} onChange={() => setProductUpdate(!productUpdate)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              Monthly product updates
-            </SoftTypography>
-          </SoftBox>
-        </SoftBox>
-        <SoftBox display="flex" py={1} mb={0.25}>
-          <SoftBox mt={0.25}>
-            <Switch checked={newsletter} onChange={() => setNewsletter(!newsletter)} />
-          </SoftBox>
-          <SoftBox width="80%" ml={2}>
-            <SoftTypography variant="button" fontWeight="regular" color="text">
-              Subscribe to newsletter
             </SoftTypography>
           </SoftBox>
         </SoftBox>

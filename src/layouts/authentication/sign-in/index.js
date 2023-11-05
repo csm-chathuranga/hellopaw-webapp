@@ -1,63 +1,37 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-import { useState } from "react";
-
-// react-router-dom components
 import { Link } from "react-router-dom";
-
-// @mui material components
-import Switch from "@mui/material/Switch";
-
-// Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
-import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import TextField from '@mui/material/TextField';
 import CoverLayout from "layouts/authentication/components/CoverLayout";
 import curved9 from "assets/images/curved-images/curved-6.jpg";
-import { useRoutes, useNavigate } from "react-router-dom";
-import { themeAtom } from "../../../store";
-import { useAtom } from "jotai";
+import {  useNavigate } from "react-router-dom";
+import { login } from "../../../services/authService"
+import { setToken } from "../../../utils/getLocal"
+
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
   password: yup.string().required("Password is required"),
 });
+
 function SignIn() {
   const navigate = useNavigate();
-  const [token, setToken] = useAtom(themeAtom);
-  const { register, handleSubmit,  formState: { errors }, setValue, } = useForm({ resolver: yupResolver(schema) });
+  const { register, handleSubmit,  formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
-  const submitHandler = (val) => {
-    axios.post('http://localhost:3002/api/auth/login', {
-      "email": val.email,
-      "password":val.password
-    })
-    .then(function (response) {
-      setToken(JSON.stringify(response.data.data))
-      navigate('/dashboard')
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  const submitHandler = async ({ email , password }) => {
+    try {
+      const { data } = await login(email , password);
+      setToken(data.data.token);
+      navigate('/dasgboard');
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400 ) {
+        // error here
+      }
+    }
   };
 
   return (

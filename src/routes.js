@@ -1,18 +1,3 @@
-/**
-=========================================================
-* Soft UI Dashboard React - v4.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 /** 
   All of the routes for the Soft UI Dashboard React are added here,
   You can add a new route, customize the routes and delete the routes here.
@@ -39,6 +24,7 @@ Coded by www.creative-tim.com
 import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 import Billing from "layouts/billing";
+import MyPets from "layouts/mypets";
 import VirtualReality from "layouts/virtual-reality";
 import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
@@ -65,15 +51,15 @@ const routes = [
     component: <Dashboard />,
     noCollapse: true,
   },
-  {
-    type: "collapse",
-    name: "Tables",
-    key: "tables",
-    route: "/tables",
-    icon: <Office size="12px" />,
-    component: <Tables />,
-    noCollapse: true,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Tables",
+  //   key: "tables",
+  //   route: "/tables",
+  //   icon: <Office size="12px" />,
+  //   component: <Tables />,
+  //   noCollapse: true,
+  // },
   {
     type: "collapse",
     name: "Billing",
@@ -83,25 +69,25 @@ const routes = [
     component: <Billing />,
     noCollapse: true,
   },
-  {
-    type: "collapse",
-    name: "Virtual Reality",
-    key: "virtual-reality",
-    route: "/virtual-reality",
-    icon: <Cube size="12px" />,
-    component: <VirtualReality />,
-    noCollapse: true,
-  },
-  {
-    type: "collapse",
-    name: "RTL",
-    key: "rtl",
-    route: "/rtl",
-    icon: <Settings size="12px" />,
-    component: <RTL />,
-    noCollapse: true,
-  },
-  { type: "title", title: "Account Pages", key: "account-pages" },
+  // {
+  //   type: "collapse",
+  //   name: "Virtual Reality",
+  //   key: "virtual-reality",
+  //   route: "/virtual-reality",
+  //   icon: <Cube size="12px" />,
+  //   component: <VirtualReality />,
+  //   noCollapse: true,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "RTL",
+  //   key: "rtl",
+  //   route: "/rtl",
+  //   icon: <Settings size="12px" />,
+  //   component: <RTL />,
+  //   noCollapse: true,
+  // },
+  // { type: "title", title: "Account Pages", key: "account-pages" },
   {
     type: "collapse",
     name: "Profile",
@@ -109,6 +95,15 @@ const routes = [
     route: "/profile",
     icon: <CustomerSupport size="12px" />,
     component: <Profile />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "My Pets",
+    key: "myPets",
+    route: "/myPets",
+    icon: <CustomerSupport size="12px" />,
+    component: <MyPets />,
     noCollapse: true,
   },
   {
