@@ -13,7 +13,8 @@ axios.interceptors.response.use(null,error=>{
 
     if(expectedError) {
         toast('An unexpected error occured');
-        console.log("Logging the error",error);
+        // window.location.replace='/authentication/sign-in'
+        // console.log("Logging the error",error);
         // alert('An unexpected error occured');
     }
 

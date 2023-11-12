@@ -58,10 +58,22 @@ function Header() {
     return () => window.removeEventListener("resize", handleTabsOrientation);
   }, [tabsOrientation]);
 
-  useEffect(async () => {
+  function getUser(){
     const token = getToken();
-    const decoded = jwtDecode(token);
-    setUser(decoded)
+    if(token){
+      const decoded = jwtDecode(token);
+      if (decoded.exp * 1000 < Date.now()) {
+        navigate('/authentication/sign-in');
+        localStorage.removeItem('token');
+      }
+      setUser(decoded);
+    }else{
+      navigate('/authentication/sign-in');
+    }
+  }
+
+  useEffect( () => {
+    getUser();
   }, [ ]);
 
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);

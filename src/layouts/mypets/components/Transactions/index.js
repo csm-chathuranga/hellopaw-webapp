@@ -49,65 +49,18 @@ function Transactions() {
           sx={{ listStyle: "none" }}
         >
           <Transaction
-            color="error"
-            icon="arrow_downward"
-            name="Netflix"
-            description="27 March 2020, at 12:30 PM"
-            value="- $ 2,500"
+            color="success"
+            icon="arrow_upward"
+            name="Vaccinated"
+            description="26 March 2023, at 13:45 PM"
+            value="4500"
           />
           <Transaction
             color="success"
             icon="arrow_upward"
-            name="Apple"
-            description="27 March 2020, at 04:30 AM"
-            value="+ $ 2,000"
-          />
-        </SoftBox>
-        <SoftBox mt={1} mb={2}>
-          <SoftTypography
-            variant="caption"
-            color="text"
-            fontWeight="bold"
-            textTransform="uppercase"
-          >
-            yesterday
-          </SoftTypography>
-        </SoftBox>
-        <SoftBox
-          component="ul"
-          display="flex"
-          flexDirection="column"
-          p={0}
-          m={0}
-          sx={{ listStyle: "none" }}
-        >
-          <Transaction
-            color="success"
-            icon="arrow_upward"
-            name="Stripe"
-            description="26 March 2020, at 13:45 PM"
-            value="+ $ 750"
-          />
-          <Transaction
-            color="success"
-            icon="arrow_upward"
-            name="HubSpot"
-            description="26 March 2020, at 12:30 PM"
-            value="+ $ 1,000"
-          />
-          <Transaction
-            color="success"
-            icon="arrow_upward"
-            name="Creative Tim"
-            description="26 March 2020, at 08:30 AM"
-            value="+ $ 2,500"
-          />
-          <Transaction
-            color="dark"
-            icon="priority_high"
-            name="Webflow"
-            description="26 March 2020, at 05:00 AM"
-            value="Pending"
+            name="operated"
+            description="26 March 2022, at 12:30 PM"
+            value="2500"
           />
         </SoftBox>
       </SoftBox>

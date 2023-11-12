@@ -14,6 +14,6 @@ export function update (data){
    return http.put(apiEndpoint+'/pet',data);
 }
 
-export function deletePet (id){
-   return http.put(apiEndpoint+'/pet',{ id});
+export function deletePet (data){
+   return http.delete(apiEndpoint+'/pet/',data);
 }

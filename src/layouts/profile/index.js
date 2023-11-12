@@ -18,15 +18,31 @@ import PlatformSettings from "layouts/profile/components/PlatformSettings";
 import profilesListData from "layouts/profile/data/profilesListData";
 import { jwtDecode } from "jwt-decode";
 import { getToken } from "../../utils/getLocal";
+import {  useNavigate } from "react-router-dom";
 
 function Overview() {
-
+  const navigate = useNavigate();
   const [user, setUser] = useState({});
-  useEffect(async () => {
+
+   function getUser(){
     const token = getToken();
-    const decoded = jwtDecode(token);
-    setUser(decoded);
-  }, [ ]);
+    if(token){
+      const decoded = jwtDecode(token);
+      if (decoded.exp * 1000 < Date.now()) {
+        navigate('/authentication/sign-in');
+        localStorage.removeItem('token');
+      }
+      setUser(decoded);
+    }else{
+      navigate('/authentication/sign-in');
+    }
+  }
+  useEffect(() => {
+    // const token = getToken();
+    // const decoded = jwtDecode(token);
+    // setUser(decoded);
+    getUser()
+  }, []);
 
   return (
     <DashboardLayout>

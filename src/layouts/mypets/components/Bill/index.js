@@ -1,16 +1,22 @@
 
 import PropTypes from "prop-types";
-
-// @mui material components
 import Icon from "@mui/material/Icon";
-
-// Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftButton from "components/SoftButton";
+import {  deleteConfirm } from "../../../../utils/utils";
+import {  deletePet } from "../../../../services/petService";
 
 // eslint-disable-next-line react/prop-types
-function Bill({ name, color, type, vat, noGutter }) {
+function Bill({id, name, color, type, vat, noGutter ,handleEdit}) {
+  let deleteHandler = async (id) => {
+  //  deleteConfirm((val)=>{
+  //     if(val)  
+      deletePet(id);
+    // })
+  }
+
+  
   return (
     <SoftBox
       component="li"
@@ -22,6 +28,7 @@ function Bill({ name, color, type, vat, noGutter }) {
       p={3}
       mb={noGutter ? 0 : 1}
       mt={2}
+      key={id}
     >
       <SoftBox width="100%" display="flex" flexDirection="column">
         <SoftBox
@@ -42,11 +49,11 @@ function Bill({ name, color, type, vat, noGutter }) {
             ml={{ xs: -1.5, sm: 0 }}
           >
             <SoftBox mr={1}>
-              <SoftButton variant="text" color="error">
+              <SoftButton variant="text" color="error" onClick={()=>deleteHandler(id)}>
                 <Icon>delete</Icon>&nbsp;delete
               </SoftButton>
             </SoftBox>
-            <SoftButton variant="text" color="dark">
+            <SoftButton variant="text" color="dark" onClick={()=>handleEdit(id)}>
               <Icon>edit</Icon>&nbsp;edit
             </SoftButton>
             <SoftButton variant="text" color="dark">
